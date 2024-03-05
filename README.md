@@ -1,10 +1,10 @@
-[![publish-pages](https://github.com/tgxn/lemmy-modder/actions/workflows/publish-pages-main.yaml/badge.svg)](https://github.com/tgxn/lemmy-modder/actions/workflows/publish-pages-main.yaml)
+[![publish-pages](https://github.com/Nothing4You/lemmy-modder/actions/workflows/publish-pages-main.yaml/badge.svg)](https://github.com/Nothing4You/lemmy-modder/actions/workflows/publish-pages-main.yaml)
 
-# Lemmy Modder https://modder.lemmyverse.net/ 
+# Lemmy Modder https://modder.lem.rocks/
 
 ⚡ A moderation tool for [Lemmy](https://github.com/LemmyNet/lemmy) community moderators and site admins. ⚡
 
- > 🎉🎉 We now have cross-version support for 0.19! 🎉🙌 ~~Currently only compatible with 0.18.x instances _(and not 0.19.x)_, as the [Lemmy SDK is not backwards-compatible.](https://github.com/LemmyNet/lemmy-js-client/issues/194) ☹~~
+Support for instances running versions older than Lemmy 0.19.0 has been dropped in this fork. Some features may still work, but don't rely on them.
 
 ## Screenshots
 | | | |
@@ -36,7 +36,7 @@ This is determined based on the amount of moderated communities you manage.
 
 ## Hosting Options
 
-You can either use the hosted option at https://modder.lemmyverse.net/ or host your own instance.
+You can either use the hosted option at https://modder.lem.rocks/ or host your own instance.
 
 ### Running Own Instance with Docker Compose
 
@@ -51,7 +51,7 @@ services:
 
   ## this is the lemmy modder container, you can change port 9696 to wehatever you like
   lemmy-modder:
-    image: ghcr.io/tgxn/lemmy-modder:latest
+    image: ghcr.io/Nothing4You/lemmy-modder:latest
     restart: unless-stopped
     ports:
       - 9696:80
@@ -96,7 +96,7 @@ Just make sure you have these tools installed:
 
 1. Clone this Github repo locally, and switch to the cloned directory
 ```
-git clone https://github.com/tgxn/lemmy-modder.git && cd lemmy-modder
+git clone https://github.com/Nothing4You/lemmy-modder.git && cd lemmy-modder
 ```
 3. Install the Node Dependencies 
 ```
@@ -118,7 +118,7 @@ docker build -t lemmy-modder:local .
 
 2. Run the docker image _(with lock example)_
 ```
-docker run --rm --env LOCK_DOMAIN="lemmy.tgxn.net" -p 9696:80 lemmy-modder:local
+docker run --rm --env LOCK_DOMAIN="lemmy.Nothing4You.net" -p 9696:80 lemmy-modder:local
 ```
 
 
@@ -126,5 +126,6 @@ docker run --rm --env LOCK_DOMAIN="lemmy.tgxn.net" -p 9696:80 lemmy-modder:local
 
 Lemmy Devs https://github.com/LemmyNet
 
-Logo made by Andy Cuccaro (@andycuccaro) under the CC-BY-SA 4.0 license.
+[Domenic Horner](https://github.com/tgxn), who created the [original version](https://github.com/tgxn/lemmy-modder) of this tool.
 
+Logo made by Andy Cuccaro (@andycuccaro) under the CC-BY-SA 4.0 license.

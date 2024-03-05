@@ -43,6 +43,7 @@ export function PersonMetaChips({ person }) {
 }
 
 export function SiteAdminChip({ person }) {
+  // TODO: this was moved to local_user in 0.19 and is no longer accessible on person
   if (!person.admin) return null;
 
   return (
