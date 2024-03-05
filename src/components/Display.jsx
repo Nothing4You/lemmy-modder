@@ -17,11 +17,11 @@ import FediVerse from "../../public/icons/fedi.png";
 
 import { BasicInfoTooltip } from "./Tooltip.jsx";
 
-// time in formats `2023-07-14T04:12:07.720101` are in GMT and must be adjusted to unix epoch for moment display// replace .720101 with Z
+// time in formats `2023-07-14T04:12:07.720101` are in GMT and must be adjusted to unix epoch for moment display
+// replace .720101 with Z
 export function MomentAdjustedTimeAgo({ children, ...props }) {
   if (children.includes("T")) {
-    // replace .720101 with Z
-    children = children.replace(/(\.\d{6})/, "Z");
+    children = children.replace(/(\.\d{6})Z?$/, "Z");
 
     children = new Date(children).getTime();
   }
