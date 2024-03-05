@@ -1,4 +1,4 @@
-FROM node:18-alpine as build
+FROM node:18-alpine@sha256:ca9f6cb0466f9638e59e0c249d335a07c867cd50c429b5c7830dda1bed584649 as build
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY ./ .
 RUN npm run build
 
 # copy files to run container
-FROM nginx:stable-alpine
+FROM nginx:stable-alpine@sha256:6845649eadc1f0a5dacaf5bb3f01b480ce200ae1249114be11fef9d389196eaf
 
 # copy distribution from build step
 COPY --from=build /app/dist /usr/share/nginx/html
