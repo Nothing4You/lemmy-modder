@@ -63,7 +63,7 @@ export default function CenterMenu() {
           variant="outlined"
           color="neutral"
           sx={{ mr: 1 }}
-          href="https://github.com/tgxn/lemmy-modder"
+          href="https://github.com/Nothing4You/lemmy-modder"
           target="_lm_github"
           component="a"
         >
@@ -76,7 +76,7 @@ export default function CenterMenu() {
           variant="outlined"
           color="neutral"
           // sx={{ mr: 2 }}
-          // href="https://github.com/tgxn/lemmy-modder"
+          // href="https://github.com/Nothing4You/lemmy-modder"
           // target="_lm_github"
           // component="a"
           onClick={() => setOpen(true)}
