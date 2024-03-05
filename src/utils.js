@@ -2,7 +2,7 @@ export function getUserRole(currentUser) {
   if (!currentUser) return null;
 
   // is admin
-  if (currentUser.site.my_user.local_user_view.person.admin) return "admin";
+  if (currentUser.site.my_user.local_user_view.local_user.admin) return "admin";
 
   // is mod
   if (currentUser.site.my_user.moderates.length > 0) return "mod";
