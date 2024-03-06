@@ -34,11 +34,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-
-      # https://github.com/actions/toolkit/issues/946#issuecomment-1590016041
-      - name: root suid tar
-        run: sudo chown root:root /bin/tar && sudo chmod u+s /bin/tar
-
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: Setup Pages
@@ -67,6 +62,12 @@ jobs:
       - name: Build Frontend
         run: npm run build
         # working-directory: ./frontend
+
+      - name: Fix permissions
+        run: |
+          chmod -c -R +rX "_site/" | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
 
       # upload pages
       - name: upload github pages artifacts
