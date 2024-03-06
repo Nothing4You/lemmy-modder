@@ -45,7 +45,7 @@ jobs:
         uses: actions/configure-pages@b8130d9ab958b325bbde9786d62f2c97a9885a0e # v3
 
       - name: Use Node.js 18.17.0
-        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
           node-version: 18.17.0
      
