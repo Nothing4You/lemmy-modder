@@ -39,7 +39,7 @@ jobs:
       - name: root suid tar
         run: sudo chown root:root /bin/tar && sudo chmod u+s /bin/tar
 
-      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: Setup Pages
         uses: actions/configure-pages@b8130d9ab958b325bbde9786d62f2c97a9885a0e # v3
