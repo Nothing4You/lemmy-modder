@@ -16,13 +16,16 @@
     }
   ],
   // https://github.com/renovatebot/renovate/discussions/24774#discussioncomment-7155150
-  "regexManagers": {
-    "fileMatch": ["^\\.github\\/workflows\\/.*\\.ya?ml$"],
-    "matchStrings": [
-      "node-version: '(?<latestVersion>.+?)'"
-    ],
-    "depName": "node",
-    "datasourceTemplate":"docker",
-    "versioningTemplate": "docker"
-  }
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^\\.github\\/workflows\\/.*\\.ya?ml$"],
+      "matchStrings": [
+        "node-version: '(?<latestVersion>.+?)'"
+      ],
+      "depName": "node",
+      "datasourceTemplate":"docker",
+      "versioningTemplate": "docker"
+    }
+  ]
 }
