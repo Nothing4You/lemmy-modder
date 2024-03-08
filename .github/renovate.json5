@@ -21,7 +21,7 @@
       "customType": "regex",
       "fileMatch": ["^\\.github\\/workflows\\/.*\\.ya?ml$"],
       "matchStrings": [
-        "node-version: '(?<latestVersion>.+?)'"
+        "node-version: '(?<currentValue>.+?)'"
       ],
       "depNameTemplate": "node",
       "datasourceTemplate":"docker",
