@@ -23,7 +23,7 @@
       "matchStrings": [
         "node-version: '(?<latestVersion>.+?)'"
       ],
-      "depName": "node",
+      "depNameTemplate": "node",
       "datasourceTemplate":"docker",
       "versioningTemplate": "docker"
     }
