@@ -8,8 +8,7 @@ import {
   REHYDRATE,
   persistStore,
 } from "redux-persist";
-import thunk from "redux-thunk";
-import { setupListeners } from "@reduxjs/toolkit/dist/query";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 import accountReducer from "./reducer/accountReducer";
 import configReducer from "./reducer/configReducer";
@@ -27,7 +26,6 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     })
-      .concat(thunk)
 });
 
 setupListeners(store.dispatch);
