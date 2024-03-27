@@ -153,8 +153,18 @@ export default function useLemmyReports() {
       });
     }
 
-    // filter to one community
-    if (filterCommunity !== "all") {
+    // filter to one community or type of communities
+    if (filterCommunity === "@local") {
+      mergedReports = mergedReports.filter((report) => {
+        return report.community?.local === true;
+      });
+    }
+    else if (filterCommunity === "@remote") {
+      mergedReports = mergedReports.filter((report) => {
+        return report.community?.local === false;
+      });
+    }
+    else if (filterCommunity !== "all") {
       mergedReports = mergedReports.filter((report) => {
         return report.community?.name === filterCommunity;
       });

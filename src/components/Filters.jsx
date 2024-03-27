@@ -74,6 +74,12 @@ export function FilterCommunity() {
             <Option key="all" value="all">
               Show Everything
             </Option>
+            <Option key="@local" value="@local">
+              Show Local Communities
+            </Option>
+            <Option key="@remote" value="@remote">
+              Show Remote Communities
+            </Option>
             {modCommms.map((community) => {
               const { name, title } = community.community;
               return (
