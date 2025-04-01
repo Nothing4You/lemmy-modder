@@ -50,7 +50,7 @@
     "remove-markdown": "^0.6.0",
     "sass": "^1.69.5",
     "sass-loader": "^16.0.0",
-    "sonner": "^1.2.4",
+    "sonner": "^2.0.0",
     "style-loader": "^4.0.0",
     "url-loader": "^4.1.1",
     "webpack": "^5.89.0",
