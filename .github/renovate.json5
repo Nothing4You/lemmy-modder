@@ -4,6 +4,7 @@
     "config:recommended",
     ":disableDependencyDashboard"
   ],
+  "prConcurrentLimit": 5,
   "prHourlyLimit": 0,
   "separateMinorPatch": true,
   "stabilityDays": 14,
