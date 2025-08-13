@@ -6,13 +6,13 @@
   ],
   "prHourlyLimit": 0,
   "separateMinorPatch": true,
-  "stabilityDays": 1,
+  "stabilityDays": 14,
   "pinDigests": true,
   "packageRules": [
     {
-      "description": "Schedule digest updates weekly",
+      "description": "Schedule digest updates monthly",
       "matchUpdateTypes": ["digest"],
-      "schedule": ["every 7 days"],
+      "schedule": ["every 1 months"],
     }
   ],
   // https://github.com/renovatebot/renovate/discussions/24774#discussioncomment-7155150
