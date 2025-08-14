@@ -3,6 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Box from "@mui/joy/Box";
+import CircularProgress from "@mui/joy/CircularProgress";
 import Typography from "@mui/joy/Typography";
 import Tooltip from "@mui/joy/Tooltip";
 import Link from "@mui/joy/Link";
@@ -11,6 +12,9 @@ import SecurityIcon from "@mui/icons-material/Security";
 import BlockIcon from "@mui/icons-material/Block";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 import DeleteIcon from "@mui/icons-material/Delete";
+import GroupIcon from "@mui/icons-material/Group";
+import GroupOffIcon from "@mui/icons-material/GroupOff";
+import PsychologyAltIcon from "@mui/icons-material/PsychologyAlt";
 
 import { SquareChip, UserAvatar, FediverseChipLink } from "../Display.jsx";
 import { UserTooltip } from "../Tooltip.jsx";
@@ -18,6 +22,7 @@ import { UserTooltip } from "../Tooltip.jsx";
 import { parseActorId } from "../../utils.js";
 
 import { getSiteData } from "../../hooks/getSiteData";
+import { useLemmyHttp } from "../../hooks/useLemmyHttp";
 
 import { PersonMetaChips } from "./UserChips.jsx";
 
@@ -130,6 +135,29 @@ export function PersonMetaTitle({ creator, sx }) {
   );
 }
 
+const getLocalCommunityModeratorIndicator = (communityData) => {
+  const localModeratorCount = communityData.moderators.filter(
+    (m) => m.moderator.local && !m.moderator.banned && !m.moderator.deleted,
+  ).length;
+  if (localModeratorCount > 0) {
+    return (
+      <SquareChip
+        color={"success"}
+        tooltip={`Community has ${localModeratorCount} local moderator${localModeratorCount > 1 ? "s" : ""}`}
+        iconOnly={<GroupIcon fontSize="small" />}
+      />
+    );
+  } else {
+    return (
+      <SquareChip
+        color={"warning"}
+        tooltip="Community has no local moderators"
+        iconOnly={<GroupOffIcon fontSize="small" />}
+      />
+    );
+  }
+};
+
 export function CommunityMetaLine({ community, showIn = false, sx }) {
   const { baseUrl, siteData, localPerson, userRole } = getSiteData();
   const navigate = useNavigate();
@@ -144,6 +172,21 @@ export function CommunityMetaLine({ community, showIn = false, sx }) {
 
   let localCommunityLink = `https://${baseUrl}/c/${community.name}`;
   if (baseUrl != actorInstanceBaseUrl) localCommunityLink = `${localCommunityLink}@${actorInstanceBaseUrl}`;
+
+  const isAdmin = userRole === "admin";
+
+  const {
+    isLoading: communityLoading,
+    isFetching: communityFetching,
+    error: communityError,
+    data: communityData,
+  } = useLemmyHttp(
+    "getCommunity",
+    {
+      id: community.id,
+    },
+    isAdmin,
+  );
 
   return (
     <Box
@@ -203,6 +246,24 @@ export function CommunityMetaLine({ community, showIn = false, sx }) {
         {community.deleted && (
           <SquareChip color={"danger"} tooltip="User is deleted" iconOnly={<DeleteIcon fontSize="small" />} />
         )}
+
+        {isAdmin && (communityLoading || communityFetching) && (
+          <CircularProgress
+            size="sm"
+            color="neutral"
+            sx={{
+              "--CircularProgress-size": "16px",
+            }}
+          />
+        )}
+        {isAdmin && communityError && (
+          <SquareChip
+            color={"danger"}
+            tooltip="Failed to check community moderators"
+            iconOnly={<PsychologyAltIcon fontSize="small" />}
+          />
+        )}
+        {isAdmin && communityData && getLocalCommunityModeratorIndicator(communityData)}
       </Typography>
     </Box>
   );

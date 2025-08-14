@@ -14,7 +14,7 @@ import {
   setAccountIsLoading,
 } from "../redux/reducer/accountReducer";
 
-export function useLemmyHttp(callLemmyMethod, formData = {}) {
+export function useLemmyHttp(callLemmyMethod, formData = {}, enabled = undefined) {
   const currentUser = useSelector(selectCurrentUser);
 
   const formDataArray = useMemo(() => {
@@ -42,7 +42,7 @@ export function useLemmyHttp(callLemmyMethod, formData = {}) {
     refetchOnMount: false,
     staleTime: Infinity,
     cacheTime: Infinity,
-    enabled: !!currentUser,
+    enabled: enabled !== undefined ? enabled && !!currentUser : !!currentUser,
   });
 
   return {
