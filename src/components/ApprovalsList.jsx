@@ -126,12 +126,12 @@ function ApplicationListItem({ registration }) {
               <SquareChip
                 color="primary"
                 variant="outlined"
-                tooltip={registration.creator_local_user.validator_time}
+                tooltip={registration.creator.published}
                 tooltipPlacement="bottom"
               >
                 registered{" "}
                 <MomentAdjustedTimeAgo fromNow>
-                  {registration.creator_local_user.validator_time}
+                  {registration.creator.published}
                 </MomentAdjustedTimeAgo>
               </SquareChip>
             )}
