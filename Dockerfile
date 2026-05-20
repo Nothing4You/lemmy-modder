@@ -15,7 +15,7 @@ RUN \
   npm run build
 
 # copy files to run container
-FROM nginx:stable-alpine@sha256:67cbbcc757a6ce913b33e515b020cfd3923897ad883c452903b1e3487a95a570
+FROM nginx:stable-alpine@sha256:c819f83c54b0361f5557601bf5eb4943d09360e7a7fdf426afc466570f45874d
 
 # copy distribution from build step
 COPY --from=build /app/dist /usr/share/nginx/html
