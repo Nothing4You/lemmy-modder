@@ -49,7 +49,7 @@ jobs:
       # install npm dependencies
       - name: Cache NPM Modules
         id: cache-frontend-npm
-        uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         env:
           cache-name: cache-frontend-npm
         with:
